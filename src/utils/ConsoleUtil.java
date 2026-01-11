@@ -41,7 +41,8 @@ public class ConsoleUtil {
         out("3. Tambah Anggota");
         out("4. Update Anggota");
         out("5. Hapus Anggota");
-        out("6. Kembali");
+        out("6. Urutkan Anggota");
+        out("7. Kembali");
         out("============================================");
     }
 
@@ -54,7 +55,8 @@ public class ConsoleUtil {
         out("3. Tambah Buku");
         out("4. Update Buku");
         out("5. Hapus Buku");
-        out("6. Kembali");
+        out("6. Sorting Buku");
+        out("7. Kembali");
         out("============================================");
     }
 

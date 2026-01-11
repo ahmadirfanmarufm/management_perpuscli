@@ -10,7 +10,7 @@ public class KelolaAnggota {
         while(true) {
             ConsoleUtil.menuKelolaAnggota();
 
-            int pilihan = ConsoleUtil.readInt("Pilih (1-6): ", 1, 6);
+            int pilihan = ConsoleUtil.readInt("Pilih (1-7): ", 1, 7);
 
             switch (pilihan) {
                 case 1: AnggotaService.lihatAnggota(); break;
@@ -18,7 +18,8 @@ public class KelolaAnggota {
                 case 3: AnggotaService.tambahAnggota(); break;
                 case 4: AnggotaService.updateAnggota(); break;
                 case 5: AnggotaService.hapusAnggota(); break;
-                case 6: 
+                case 6: AnggotaService.menuSorting(); break;
+                case 7: 
                     ConsoleUtil.clearScreen();
                     return;
             }

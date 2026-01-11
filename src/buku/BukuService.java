@@ -79,6 +79,172 @@ public class BukuService {
         ConsoleUtil.resetBackInput();
     }
 
+    // ===== SORTING METHODS =====
+    
+    public void menuSorting() {
+        if (jumlah == 0) {
+            System.out.println("Data buku kosong!");
+            ConsoleUtil.resetBackInput();
+            return;
+        }
+
+        ConsoleUtil.clearScreen();
+        System.out.println("=== MENU SORTING BUKU ===");
+        System.out.println("1. Urutkan berdasarkan Judul (A-Z)");
+        System.out.println("2. Urutkan berdasarkan Judul (Z-A)");
+        System.out.println("3. Urutkan berdasarkan Pengarang (A-Z)");
+        System.out.println("4. Urutkan berdasarkan Pengarang (Z-A)");
+        System.out.println("5. Urutkan berdasarkan Tahun (Terlama)");
+        System.out.println("6. Urutkan berdasarkan Tahun (Terbaru)");
+        System.out.println("7. Urutkan berdasarkan Eksemplar (Sedikit)");
+        System.out.println("8. Urutkan berdasarkan Eksemplar (Banyak)");
+        System.out.println("9. Kembali");
+
+        int pilih = ConsoleUtil.readInt("Pilih (1-9): ", 1, 9);
+
+        switch (pilih) {
+            case 1 -> sortByJudulAsc();
+            case 2 -> sortByJudulDesc();
+            case 3 -> sortByPengarangAsc();
+            case 4 -> sortByPengarangDesc();
+            case 5 -> sortByTahunAsc();
+            case 6 -> sortByTahunDesc();
+            case 7 -> sortByEksemplarAsc();
+            case 8 -> sortByEksemplarDesc();
+            case 9 -> {
+                ConsoleUtil.clearScreen();
+                return;
+            }
+        }
+    }
+
+    private void sortByJudulAsc() {
+        for (int i = 0; i < jumlah - 1; i++) {
+            for (int j = 0; j < jumlah - i - 1; j++) {
+                if (dataBuku[j].getJudul().compareToIgnoreCase(dataBuku[j + 1].getJudul()) > 0) {
+                    Buku temp = dataBuku[j];
+                    dataBuku[j] = dataBuku[j + 1];
+                    dataBuku[j + 1] = temp;
+                }
+            }
+        }
+        updateNomorUrut();
+        System.out.println("Data berhasil diurutkan berdasarkan Judul (A-Z).");
+        tampilkanBuku();
+    }
+
+    private void sortByJudulDesc() {
+        for (int i = 0; i < jumlah - 1; i++) {
+            for (int j = 0; j < jumlah - i - 1; j++) {
+                if (dataBuku[j].getJudul().compareToIgnoreCase(dataBuku[j + 1].getJudul()) < 0) {
+                    Buku temp = dataBuku[j];
+                    dataBuku[j] = dataBuku[j + 1];
+                    dataBuku[j + 1] = temp;
+                }
+            }
+        }
+        updateNomorUrut();
+        System.out.println("Data berhasil diurutkan berdasarkan Judul (Z-A).");
+        tampilkanBuku();
+    }
+
+    private void sortByPengarangAsc() {
+        for (int i = 0; i < jumlah - 1; i++) {
+            for (int j = 0; j < jumlah - i - 1; j++) {
+                if (dataBuku[j].getPengarang().compareToIgnoreCase(dataBuku[j + 1].getPengarang()) > 0) {
+                    Buku temp = dataBuku[j];
+                    dataBuku[j] = dataBuku[j + 1];
+                    dataBuku[j + 1] = temp;
+                }
+            }
+        }
+        updateNomorUrut();
+        System.out.println("Data berhasil diurutkan berdasarkan Pengarang (A-Z).");
+        tampilkanBuku();
+    }
+
+    private void sortByPengarangDesc() {
+        for (int i = 0; i < jumlah - 1; i++) {
+            for (int j = 0; j < jumlah - i - 1; j++) {
+                if (dataBuku[j].getPengarang().compareToIgnoreCase(dataBuku[j + 1].getPengarang()) < 0) {
+                    Buku temp = dataBuku[j];
+                    dataBuku[j] = dataBuku[j + 1];
+                    dataBuku[j + 1] = temp;
+                }
+            }
+        }
+        updateNomorUrut();
+        System.out.println("Data berhasil diurutkan berdasarkan Pengarang (Z-A).");
+        tampilkanBuku();
+    }
+
+    private void sortByTahunAsc() {
+        for (int i = 0; i < jumlah - 1; i++) {
+            for (int j = 0; j < jumlah - i - 1; j++) {
+                if (dataBuku[j].getTahun() > dataBuku[j + 1].getTahun()) {
+                    Buku temp = dataBuku[j];
+                    dataBuku[j] = dataBuku[j + 1];
+                    dataBuku[j + 1] = temp;
+                }
+            }
+        }
+        updateNomorUrut();
+        System.out.println("Data berhasil diurutkan berdasarkan Tahun (Terlama ke Terbaru).");
+        tampilkanBuku();
+    }
+
+    private void sortByTahunDesc() {
+        for (int i = 0; i < jumlah - 1; i++) {
+            for (int j = 0; j < jumlah - i - 1; j++) {
+                if (dataBuku[j].getTahun() < dataBuku[j + 1].getTahun()) {
+                    Buku temp = dataBuku[j];
+                    dataBuku[j] = dataBuku[j + 1];
+                    dataBuku[j + 1] = temp;
+                }
+            }
+        }
+        updateNomorUrut();
+        System.out.println("Data berhasil diurutkan berdasarkan Tahun (Terbaru ke Terlama).");
+        tampilkanBuku();
+    }
+
+    private void sortByEksemplarAsc() {
+        for (int i = 0; i < jumlah - 1; i++) {
+            for (int j = 0; j < jumlah - i - 1; j++) {
+                if (dataBuku[j].getEksemplar() > dataBuku[j + 1].getEksemplar()) {
+                    Buku temp = dataBuku[j];
+                    dataBuku[j] = dataBuku[j + 1];
+                    dataBuku[j + 1] = temp;
+                }
+            }
+        }
+        updateNomorUrut();
+        System.out.println("Data berhasil diurutkan berdasarkan Eksemplar (Sedikit ke Banyak).");
+        tampilkanBuku();
+    }
+
+    private void sortByEksemplarDesc() {
+        for (int i = 0; i < jumlah - 1; i++) {
+            for (int j = 0; j < jumlah - i - 1; j++) {
+                if (dataBuku[j].getEksemplar() < dataBuku[j + 1].getEksemplar()) {
+                    Buku temp = dataBuku[j];
+                    dataBuku[j] = dataBuku[j + 1];
+                    dataBuku[j + 1] = temp;
+                }
+            }
+        }
+        updateNomorUrut();
+        System.out.println("Data berhasil diurutkan berdasarkan Eksemplar (Banyak ke Sedikit).");
+        tampilkanBuku();
+    }
+
+    private void updateNomorUrut() {
+        for (int i = 0; i < jumlah; i++) {
+            dataBuku[i].setNo(i + 1);
+        }
+        autoNo = jumlah + 1;
+    }
+
     public Buku getBuku(String keyword) {
         for(int i = 0; i < jumlah; i++) {
             Buku b = dataBuku[i];

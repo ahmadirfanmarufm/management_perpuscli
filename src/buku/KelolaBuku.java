@@ -25,12 +25,16 @@ public class KelolaBuku {
         service.hapusBuku();
     }
 
+    private void sortingBuku() {
+        service.menuSorting();
+    }
+
     public void showMenu() {
         while(true) {
             ConsoleUtil.clearScreen();
             ConsoleUtil.menuKelolaBuku();
 
-            int menu = ConsoleUtil.readInt("Pilih (1-6): ", 1, 6);
+            int menu = ConsoleUtil.readInt("Pilih (1-7): ", 1, 7);
 
             switch(menu) {
                 case 1 -> liatBuku();
@@ -38,7 +42,8 @@ public class KelolaBuku {
                 case 3 -> tambahBuku();
                 case 4 -> updateBuku();
                 case 5 -> hapusBuku();
-                case 6 -> {
+                case 6 -> sortingBuku();
+                case 7 -> {
                     ConsoleUtil.clearScreen();
                     return;
                 }

@@ -27,6 +27,7 @@ Proyek ini dibuat sebagai **tugas kolaborasi tim** dan bertujuan untuk melatih:
 - Cari buku (ISBN / Judul / Pengarang / Penerbit)
 - Update data buku
 - Hapus buku
+- Sorting buu
 - Manajemen stok eksemplar
 
 ### 👤 Kelola Anggota
@@ -35,11 +36,13 @@ Proyek ini dibuat sebagai **tugas kolaborasi tim** dan bertujuan untuk melatih:
 - Cari anggota berdasarkan ID
 - Update data anggota
 - Hapus anggota
+- Sorting Anggota
 
 ### 🔄 Transaksi
 - Peminjaman buku
 - Pengembalian buku
 - Validasi stok buku
+- Sorting
 - Perhitungan denda otomatis (jika terlambat)
 - Menampilkan daftar peminjaman aktif
 

@@ -31,8 +31,6 @@ public class AnggotaService {
             a.id, a.nama, a.noHp, a.alamat, a.tanggalDaftar
         );
         System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println("Total anggota: " + total);
-        System.out.println("=====================================================================================");
     }
 
     /* ------------ One Table ----------- */
@@ -109,6 +107,62 @@ public class AnggotaService {
             printRow(members[i], total);
         }
         ConsoleUtil.resetBackInput();
+    }
+
+    /* ---------- SORTING ---------- */
+
+    static void menuSorting() {
+        if (jumlahMember == 0) {
+            System.out.println("Belum ada anggota.");
+            return;
+        }
+
+        System.out.println("\n=== MENU SORTING ===");
+        System.out.println("1. Urutkan berdasarkan ID");
+        System.out.println("2. Urutkan berdasarkan Nama");
+        System.out.print("Pilih: ");
+
+        int pilih = input.nextInt();
+        input.nextLine();
+
+        switch (pilih) {
+            case 1:
+                sortById();
+                break;
+            case 2:
+                sortByNama();
+                break;
+            default:
+                System.out.println("Pilihan tidak valid!");
+        }
+    }
+
+    static void sortById() {
+        for (int i = 0; i < jumlahMember - 1; i++) {
+            for (int j = 0; j < jumlahMember - i - 1; j++) {
+                if (members[j].id > members[j + 1].id) {
+                    Anggota temp = members[j];
+                    members[j] = members[j + 1];
+                    members[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("Data berhasil diurutkan berdasarkan ID.");
+        lihatAnggota();
+    }
+
+    static void sortByNama() {
+        for (int i = 0; i < jumlahMember - 1; i++) {
+            for (int j = 0; j < jumlahMember - i - 1; j++) {
+                if (members[j].nama.compareToIgnoreCase(members[j + 1].nama) > 0) {
+                    Anggota temp = members[j];
+                    members[j] = members[j + 1];
+                    members[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("Data berhasil diurutkan berdasarkan Nama.");
+        lihatAnggota();
     }
 
     /* ---------- GET ANGGOTA BY ID ---------- */
